@@ -4,5 +4,6 @@
 </head>
 <body>
 <?php echo '<p>Hola Mundo '.$_GET["nombre"].'</p>';?>
+<?php echo '<p>Hola Mundo 2 '.$_GET["apellido"].'</p>';?>
 </body>
 </html>
