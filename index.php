@@ -27,3 +27,11 @@
   </script>
 </body>
 </html>
+
+<?php
+$buscar = $_GET['txtbuscar'];
+
+$url = "https://api.mercadolibre.com/sites/MLU/search?q=".$buscar;
+echo "$url";
+
+?>
