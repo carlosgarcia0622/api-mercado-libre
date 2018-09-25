@@ -12,7 +12,6 @@
 </form>
 
 <?php echo '<p>Hola Mundo '.$_GET["nombre"].'</p>';?>
-<?php echo '<p>Hola Mundo 2 '.$_GET["apellido"].'</p>';?>
 <div id="app">
     {{ message }}
   </div>
@@ -32,6 +31,8 @@
 $buscar = $_GET['txtbuscar'];
 
 $url = "https://api.mercadolibre.com/sites/MLU/search?q=".$buscar;
-echo "$url";
+$json = file_get_contents($url);
+$datos = json_decode($json,true);
+var_dump($datos);
 
 ?>
