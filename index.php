@@ -36,10 +36,10 @@ $datos = json_decode($json,true);
 for($i=0;$i<50;$i++){
   $nombre = $datos["results"][$i]["title"];
   var_dump($nombre);
-  echo "\n";
+  echo "<br>";
   $imagen = $datos["results"][$i]["thumbnail"];
   var_dump($imagen);
-  echo "\n";
+  echo "<br>";
   
 }
 
