@@ -33,7 +33,12 @@ $buscar = $_GET['txtbuscar'];
 $url = "https://api.mercadolibre.com/sites/MLU/search?q=".$buscar;
 $json = file_get_contents($url);
 $datos = json_decode($json,true);
-$results = $datos["results"][1]["thumbnail"];
-var_dump($results);
+for($i=0;$i<50;$i++){
+  $nombre = $datos["results"][$i]["title"];
+  var_dump($nombre);
+  $imagen = $datos["results"][$i]["thumbnail"];
+  var_dump($imagen);
+}
+
 
 ?>
