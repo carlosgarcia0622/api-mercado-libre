@@ -40,6 +40,9 @@ for($i=0;$i<50;$i++){
   $imagen = $datos["results"][$i]["thumbnail"];
   var_dump($imagen);
   echo "<br>";
+  $precio = $datos["results"][$i]["price"];
+  var_dump($precio);
+  echo "<br>";
   
 }
 
