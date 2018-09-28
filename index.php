@@ -11,7 +11,7 @@
   <button tupe="submit" name="btnbuscar">Buscar</button>
 </form>
 
-<?php echo '<p>Hola Mundo '.$_GET["nombre"].'</p>';?>
+
 <div id="app">
     {{ message }}
   </div>
@@ -27,24 +27,4 @@
 </body>
 </html>
 
-<?php
-$buscar = $_GET['txtbuscar'];
 
-$url = "https://api.mercadolibre.com/sites/MLU/search?q=".$buscar;
-$json = file_get_contents($url);
-$datos = json_decode($json,true);
-for($i=0;$i<50;$i++){
-  $nombre = $datos["results"][$i]["title"];
-  var_dump($nombre);
-  echo "<br>";
-  $imagen = $datos["results"][$i]["thumbnail"];
-  var_dump($imagen);
-  echo "<br>";
-  $precio = $datos["results"][$i]["price"];
-  var_dump($precio);
-  echo "<br>";
-  
-}
-
-
-?>
