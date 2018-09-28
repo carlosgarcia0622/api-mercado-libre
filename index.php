@@ -13,14 +13,21 @@
 
 
 <div id="app">
-    {{ message }}
+    {{ infoproductos }}
   </div>
 
   <script>
     var app = new Vue({
       el: '#app',
-      data: {
-        message: 'Hello Vue!'
+      data() {
+        return{
+           infoproductos: null
+        }
+      },
+      munted(){
+        axios
+        .get('https://api.coindesk.com/v1/bpi/currentprice.json')
+        .then(response => (this.infoproductos = response))
       }
     })
   </script>
