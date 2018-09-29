@@ -1,42 +1,72 @@
 <html>
-<head>
-<title>Api mercado libre para busqueda de productos</title>
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-</head>
-<body>
+  <head>
+    <title>Api mercado libre para busqueda de productos</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            
+        }
+        th, td {
+             padding: 15px;
+        }
 
 
-  <div id="app">
-      <label for="Buscar"></label>
-      <input type="text" v-model="username" placeholder="Buscar">
-      <button tupe="submit" name="btnbuscar">Buscar</button>
-      <ol>
-        <li v-for="repo in repos">{{repo}}</li>
-      </ol>
-  </div>
+        </style>
+  </head>
 
 
-</body>
-
-<script>
+  <body>
+    <div id="app">
+      <h2>Buscar productos Mercado libre</h2>
+      
+      <input type="text" v-model="productQuery" placeholder="Buscar">
+      <button v-on:click="search">Buscar</button>
+      <h3></h3>      
+      
+      <table style="width:100%">
+        <thead>
+          <tr>
+            <th>Producto</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="result in results">
+            <td>Producto: {{result.title}}</td>
+            <td>Precio:  {{result.price}}</td>
+            <td><img :src=  'result.thumbnail'/></td>
+          </tr>
+                 
+          
+        </tbody>
+      </table>
     
-  new Vue({
-  el: '#app',
-  data: {
-      username: '',
-      repos: ['karl','hola','quemas']
     
-  },
-  watch:{
-    username:function(newValue, oldValue){
-      console.log(this.username)
-    }
+    </div>
+  </body>
 
-  }
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        productQuery: '',
+        results: []
+    
+    },
+     methods: {
+      search(){ axios({method: "Get", url:"https://api.mercadolibre.com/sites/MLU/search?q="+this.productQuery})
+        .then(response => (this.results = response.data.results))
+
+      }
   
-})
-</script>
+    }
+  
+  })
+  </script>
 </html>
 
 
