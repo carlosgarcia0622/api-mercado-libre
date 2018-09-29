@@ -36,8 +36,8 @@
         </thead>
         <tbody>
           <tr v-for="result in results">
-            <td>Producto: {{result.title}}</td>
-            <td>Precio:  {{result.price}}</td>
+            <td>{{result.title}}</td>
+            <td>{{result.price}} $</td>
             <td><img :src=  'result.thumbnail'/></td>
           </tr>
                  
